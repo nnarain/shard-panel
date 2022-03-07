@@ -1,5 +1,5 @@
 <a name="TOP"></a>
-# Geode-panel
+# shard-panel
 ![Main Assembly](assemblies/main_assembled.png)
 
 <span></span>
