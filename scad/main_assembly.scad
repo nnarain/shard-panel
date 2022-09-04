@@ -177,7 +177,7 @@ module panel_stl() {
 
 module main_assembly() {
 assembly("main") {
-    translate([0, 0, 30])
+    translate([150, 0, 30])
         xrot(180) color("white") panel_stl();
     color("grey") frame_stl();
 }
