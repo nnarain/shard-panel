@@ -52,6 +52,9 @@ screw_hole_radius = 2;
 // Height of the screw holes
 screw_hole_height = 1;
 
+// Resin Panel
+resin_panel = false;
+
 
 /* [Hidden] */
 // Used to union/diff objects
@@ -156,12 +159,17 @@ module base_shape_with_cutout(outer_radius, inner_radius, height) {
 
 // Create the panel
 module panel() {
-    union() {
-        // Visible portion of the panel that the LED will illuminate
-        base_shape(panel_radius, panel_thickness);
-        // The edges of the panel so it can be slot into the frame
-        zmove(-delta)
-            base_shape_with_cutout(panel_radius, panel_radius - panel_side_thickness, panel_height);
+    if (!resin_panel) {
+        union() {
+            // Visible portion of the panel that the LED will illuminate
+            base_shape(panel_radius, panel_thickness);
+            // The edges of the panel so it can be slot into the frame
+            zmove(-delta)
+                base_shape_with_cutout(panel_radius, panel_radius - panel_side_thickness, panel_height);
+        }
+    }
+    else {
+        base_shape_with_cutout(panel_radius, panel_radius - panel_side_thickness, panel_height);
     }
 }
 
